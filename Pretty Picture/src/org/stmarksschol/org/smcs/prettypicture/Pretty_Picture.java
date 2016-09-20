@@ -10,14 +10,14 @@ public class Pretty_Picture extends WindowController {
 	
 	
 	
-	private Text myText;
+	/*private Text myText;
 	private Text myText1;
 	private Text myText2;
 	private Text myText3;
 	private Text myText4;
 	private Text myText5;
 	private Color myColor;
-	private Color otherColor;
+	private Color otherColor;*/
 	public void begin(){
 		
 		
@@ -75,7 +75,7 @@ public class Pretty_Picture extends WindowController {
 		}
 		
 		
-		
+	
 	}
 	
 	//public void addToCanvas

@@ -1,6 +1,5 @@
 package smcs.burke.prettypicturereal;
 import java.awt.Color;
-
 import objectdraw.*;
 
 public class Pretty_picture extends WindowController {
