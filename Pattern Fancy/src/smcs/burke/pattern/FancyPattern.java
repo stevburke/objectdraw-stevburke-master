@@ -7,7 +7,7 @@ public class FancyPattern extends WindowController{
 	
 	
 	public void begin(){
-		Pattern p;
+		p = new Pattern(100,100, canvas);
 	}
 	
 	public void onMouseClick(Location mov){
