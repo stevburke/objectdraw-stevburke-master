@@ -1,46 +1,52 @@
 package smcs.burke.game;
 
+import java.awt.*;
+
 import objectdraw.*;
-import java.awt.Image;
 
-public class Character extends VisibleImage  {
+public class Character {
 	
+	private VisibleImage avatar;
 	
+	protected double stride = 3.0; /* pixels */
 	
-	String myCharacter = "smiley-face-clip-art-images-sun_smiley_face.png";
-	
-	Location point;
-	
-	public Character(java.awt.Image image, Location origin, double width, double height, DrawingCanvas canvas) {
-		super(image, origin, width, height, canvas);
-		// TODO Auto-generated constructor stub
-		
-		/*
-		Image image = null;
-		try {
-		    img = ImageIO.read(new File("strawberry.png"));
-		} catch (IOException e) {
-		}
-
-		*/
-		
-		image = Image(myCharacter);
-	
-		//Location point =
-		//Location a = double 4, double 4;
-		origin = (point);
-		
-		width = 10;
-		height = 10;
-		
+	public Character(Image avatar, Location startingOrigin, World world) {
+		this.avatar = new VisibleImage(avatar, startingOrigin, world.getCanvas());
+		this.avatar.move(this.avatar.getWidth() / -2.0, this.avatar.getHeight() / -2.0);
 	}
-
-
 	
-			
-			
-
-
+	/**
+	 * @return The center of the avatar image
+	 */
+	public Location getLocation() {
+		return new Location(
+			avatar.getX() + avatar.getWidth() / 2.0,
+			avatar.getY() + avatar.getHeight() / 2.0
+		);
+	}
+	
+	/**
+	 * @return X-coordinate of the avatar origin
+	 */
+	public double getX() {
+		return getLocation().getX();
+	}
+	
+	/**
+	 * @return Y-coordinate of the avatar origin
+	 */
+	public double getY() {
+		return getLocation().getY();
+	}
+	
+	/**
+	 * Move the avatar
+	 * @param dx Number of pixels to move in the X-direction
+	 * @param dy Bumber of pixels to move in the Y-direction
+	 */
+	public void move(double dx, double dy) {
+		this.avatar.move(dx, dy);
+	}
 }
 	
 
