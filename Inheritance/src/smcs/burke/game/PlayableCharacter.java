@@ -47,5 +47,25 @@ public class PlayableCharacter extends Character implements KeyListener {
 	}
 	
 }
-
-
+public method move()
+if ev = KeyEvent.VK_UP { 
+	cursor.move(0, -stride);
+	if jimmy = ev {
+		break;	
+}}
+if ev = KeyEvent.VK_DOWN { 
+	cursor.move(0, stride);
+	if jimmy = ev {
+		break;	
+}}
+if ev = KeyEvent.VK_RIGHT { 
+	cursor.move(-stride, 0);
+	if jimmy = ev {
+		break;	
+}}
+if ev = KeyEvent.VK_LEFT { 
+	cursor.move(stride, 0);
+	if jimmy = ev {
+		break;	
+}}
+}

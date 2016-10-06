@@ -8,6 +8,7 @@ public class Character {
 	
 	private VisibleImage avatar;
 	
+	
 	protected double stride = 3.0; /* pixels */
 	
 	public Character(Image avatar, Location startingOrigin, World world) {
@@ -46,6 +47,11 @@ public class Character {
 	 */
 	public void move(double dx, double dy) {
 		this.avatar.move(dx, dy);
+	}
+	
+	public boolean overlap(Character other) {
+		// TODO placeholder -- figure this out!
+		return avatar.overlaps(other.avatar);
 	}
 }
 	
