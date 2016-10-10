@@ -10,7 +10,7 @@ public class Game extends WindowController {
 	
 	public void begin() {
 		//this.setSize(500, 500);
-		key= new KeyboardManager();
+		key= new KeyboardManager(canvas);
 		
 		world = new World(
 			getImage(""),
@@ -21,7 +21,7 @@ public class Game extends WindowController {
 		protagonist = new PlayableCharacter(
 			getImage("https://raw.githubusercontent.com/2016-2017-smcs-adv-topics/objectdraw-in-class/5bcc435a77bb78406e5f786502b16f805777cdb9/05.%20Game%20(in%20class)/src/smcs/battis/game/stick-figure.png"),
 			new Location(150, 500),
-			world
+			world, key
 		);
 		antagonist = new ChaseCharacter(
 				getImage("http://pngimg.com/upload/horse_PNG2556.png"),

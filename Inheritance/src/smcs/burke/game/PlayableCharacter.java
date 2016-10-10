@@ -5,38 +5,21 @@ import java.awt.event.*;
 
 import objectdraw.*;
 
-public class PlayableCharacter extends Character implements KeyListener {
+public class PlayableCharacter extends Character implements Runnable{
 
-	public PlayableCharacter(Image avatar, Location startingOrigin, World world) {
+	private KeyboardManager keyboardManager;
+	private DrawingCanvas canvas;
+	
+	public int INCREMENT = 6;
+	
+	public PlayableCharacter(Image avatar, Location startingOrigin, World world, KeyboardManager keyboardManager) {
 		super(avatar, startingOrigin, world);
-		world.getCanvas().addKeyListener(this);
+		
+		
+		
 	}
 
-	@Override
-	public void keyTyped(KeyEvent e) {
-	}
 
-	@Override
-	public void keyPressed(KeyEvent e) {
-		switch (e.getKeyCode()) {
-			case KeyEvent.VK_UP:
-				move(0, -stride);
-				break;
-			case KeyEvent.VK_DOWN:
-				move(0, stride);
-				break;
-			case KeyEvent.VK_LEFT:
-				move(-stride, 0);
-				break;
-			case KeyEvent.VK_RIGHT:
-				move(stride, 0);
-				break;
-		}
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-	}
 	
 	public double getX() {
 		return getLocation().getX();
@@ -45,27 +28,36 @@ public class PlayableCharacter extends Character implements KeyListener {
 	public double getY() {
 		return getLocation().getY();
 	}
+
+
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	while (true) {
+		//
 	
+		if (keyboardManager.isPressed(1) {
+			PlayableCharater.move(0, -INCREMENT);
+			//up
+		}
+		if (keyboardManager.isPressed(-1) {
+			PlayableCharater.move(0, INCREMENT);
+			//down
+		}
+		if (keyboardManager.isPressed(2) {
+			PlayableCharater.move(-INCREMENT, 0);\
+			//left
+		}
+		if (keyboardManager.isPressed(-2) {
+			PlayableCharater.move(INCREMENT, 0);
+			//right
+		}
+		
+		
+	}
+	}
 }
-public method move()
-if ev = KeyEvent.VK_UP { 
-	cursor.move(0, -stride);
-	if jimmy = ev {
-		break;	
-}}
-if ev = KeyEvent.VK_DOWN { 
-	cursor.move(0, stride);
-	if jimmy = ev {
-		break;	
-}}
-if ev = KeyEvent.VK_RIGHT { 
-	cursor.move(-stride, 0);
-	if jimmy = ev {
-		break;	
-}}
-if ev = KeyEvent.VK_LEFT { 
-	cursor.move(stride, 0);
-	if jimmy = ev {
-		break;	
-}}
-}
+
+
