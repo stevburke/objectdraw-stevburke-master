@@ -1,16 +1,17 @@
 package smcs.burke.animals;
 
+import java.io.File;
 import java.util.Scanner;
 
 public class Animals {
 
 	private static Scanner in;
-	private static boolean i = true;
+	private static boolean YES = true, NO = false;
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		do{
 	
-		String question = new String(System.in);
+	
+		//String question = new String(System.in);
 				
 				
 		Node finger, decisionTree = new Node("Is it bigger than a breadbox");
@@ -21,7 +22,19 @@ public class Animals {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+			File file = new File("decision_tree");
+		
+		
+		do{
+			
+			
+		
+		System.out.println("Thnk of an animal?");
+		do {
+			System.out.println("Are you ready?");
+		}while (userInputYesOrNo() == false);
+		
+		
 		finger = decisionTree;
 	
 		while (finger.hasChildren()) {
@@ -36,21 +49,20 @@ public class Animals {
 		}
 		
 		//guess the animal
-		
-		
+	
 		//get some input
-		while (finger.hasChildren() == false) {
+		//while (finger.hasChildren() == false) {
 			System.out.println("Is it a(n) " + finger.getValue() + "?");
-			if (userInputYesOrNo()){
-				finger = finger.getYes();
+			if (userInputYesOrNo() == YES){
+				//finger = finger.getYes();
 				System.out.println("woot");
 				} else {
 					//creates new node containing finger animal
 					//creates new node with new animal
 					System.out.println("What animal was it?");
 					
-					Node fingery = new Node(finger.getValue());
-					Node newanimal = new Node(question);
+					Node oldAnimal = new Node(finger.getValue());
+					Node newAnimal = new Node(in.nextLine().toLowerCase());
 					
 					System.out.println("What question can differentiate between the two animals?");
 					String input;
@@ -59,15 +71,23 @@ public class Animals {
 						input = in.nextLine().toLowerCase();
 						finger = new Node(input);
 					}
-					System.out.println("While thinking about the new animal is the answer tothe question yes or no?");
+					System.out.println("While thinking about the new animal is the answer to the question yes or no?");
+					
+					try {
 					if (userInputYesOrNo()){
-						//finger = finger.getYes();
-						decisionTree.setYes(new Node(input));
-						decisionTree.setNo(new Node(question));
-					} else {
-						//finger = finger.getYes();
-						decisionTree.setNo(new Node(input));
-						decisionTree.setYes(new Node(question));
+						
+						
+							decisionTree.setYes(newAnimal);
+						
+						decisionTree.setNo(oldAnimal);
+						} else {
+						finger = finger.getYes();
+						decisionTree.setNo(oldAnimal);
+						decisionTree.setYes(newAnimal);
+					}
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
 					}
 					//finger.setValue(question);
 					
@@ -77,8 +97,10 @@ public class Animals {
 					
 				}
 
-			}
-		}while (i = true);
+			
+		
+		System.out.println("Do you want to play again?");
+		}while (userInputYesOrNo() == true);
 			
 			
 		}

@@ -4,7 +4,7 @@ import java.awt.Image;
 
 import objectdraw.Location;
 
-public class ChaseCharacter extends Character implements Runnable {
+public class ChaseCharacter extends Character {
 
 	private Character target;
 	
@@ -15,22 +15,15 @@ public class ChaseCharacter extends Character implements Runnable {
 		Character target) {
 		super(avatar, startingOrigin, world);
 		this.target = target;
-		new Thread(this).start();
+		//new Thread(this).start();
 	}
 
 	@Override
-	public void run() {
+
+	public void takeAstep() {
 		double theta;
-		while (true) {
-			theta = Math.atan2(target.getY() - getY(), target.getX() - getX());
-			move(Math.cos(theta) * stride, Math.sin(theta) * stride);
-			try {
-				
-				Thread.sleep(250);
-			} catch (InterruptedException e) {
-				/* do nothing */
-			}
-		}
+		theta = Math.atan2(target.getY() - getY(), target.getX() - getX());
+		move(Math.cos(theta) * stride, Math.sin(theta) * stride);
 	}
 
 }

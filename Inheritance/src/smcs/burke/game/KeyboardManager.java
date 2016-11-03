@@ -8,11 +8,14 @@ import objectdraw.DrawingCanvas;
 
 public class KeyboardManager implements Runnable, KeyListener{
 
-	
+	//coulddo this with enumerated tyoe
 	private Vector<Boolean> keyPressed; 
-	
+	public static final int UP = 0;
+	public static final int DOWN =1;
+	public static final int LEFT = 2;
+	public static final int RIGHT = 3;
 	//TODO warning: be thoughtful about when you actually register your KeyListenr with the canvas
-	
+	keyPressed = new boolean[4];
 	//KeyEvent ev = KeyPressed;
 	//KeyEvent jimmy = KeyReleased;
 	
@@ -21,20 +24,7 @@ public class KeyboardManager implements Runnable, KeyListener{
 	private keyPressed up;
 	private keyPressed down;*/
 	
-	int keyCode;
-	if ev.getkeyCode(VK_UP) {
-		keyCode = 1;
-	}
-	if ev.getkeyCode(VK_DOWN) {
-		keyCode = -1;
-	}
-	if ev.getkeyCode(VK_LEFT) {
-		keyCode = 2;
-	}
-	if ev.getkeyCode(VK_RIGHT) {
-		keyCode = -2;
-	}
-	
+
 	public KeyboardManager(DrawingCanvas canvas) {
 		keyPressed = new Vector<Boolean>();
 		canvas.addKeyListener(this);
@@ -58,18 +48,31 @@ public class KeyboardManager implements Runnable, KeyListener{
 		
 	}
 
-	public boolean isPressed(int keyCode) {
-		resize(keyCode);
-		return keyPressed.get(keyCode);
-	}
+	
 	
 	@Override
 	public void keyPressed(KeyEvent ev) {
 		// TODO Auto-generated method stub
 		
 			resize(ev.getKeyCode());
-			keyPressed.set(ev.getKeyCode(), true);
-		
+			//keyPressed.set(ev.getKeyCode(), true);
+			
+			switch (ev.getKeyCode()){
+			case KeyEvent.VK_UP:
+				keyPressed[UP] = true;
+				break;
+			case KeyEvent.VK_DOWN:
+				keyPressed[DOWN] = true;
+				break;
+			case KeyEvent.VK_LEFT:
+				keyPressed[LEFT] = true;
+				break;
+			case KeyEvent.VK_RIGHT:
+				keyPressed[RIGHT] = true;
+				break;
+			}
+			
+			
 		
 	}
 
@@ -81,14 +84,37 @@ public class KeyboardManager implements Runnable, KeyListener{
 		
 		//e.getKeyCode() as jimmy;
 		resize(e.getKeyCode());
-		keyPressed.set(e.getKeyCode(), false);
+		//keyPressed.set(e.getKeyCode(), false);
+		
+		switch (e.getKeyCode()){
+		case KeyEvent.VK_UP:
+			keyPressed[UP] = false;
+			break;
+		case KeyEvent.VK_DOWN:
+			keyPressed[DOWN] = false;
+			break;
+		case KeyEvent.VK_LEFT:
+			keyPressed[LEFT] = false;
+			break;
+		case KeyEvent.VK_RIGHT:
+			keyPressed[RIGHT] = false;
+			break;
+		}
+		
+	}
+	
+	public boolean isPressed(int keyCode) {
+		resize(keyCode);
+		return keyPressed.get(keyCode);
+		if (keyCode >= 0 && keyCode < keyPressed.length) {
+			return keyPressed[keyCode];
+		}
+		
 	}
 
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
-	
-		
 		
 		
 	}

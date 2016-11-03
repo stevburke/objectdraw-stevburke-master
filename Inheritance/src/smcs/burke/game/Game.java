@@ -30,5 +30,6 @@ public class Game extends WindowController {
 				protagonist
 			);
 		canvas.requestFocus();
+		world.start();
 	}
 }

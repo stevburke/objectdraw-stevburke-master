@@ -10,11 +10,13 @@ public class World implements Runnable {
 	private KeyboardManager keey;
 	private DrawingCanvas canvas;
 	
+	
 	public World(Image background, DrawingCanvas canvas, KeyboardManager key) {
 		this.canvas = canvas;
 		keey  = key;
 		new VisibleImage(background, -500, -250, canvas);
 		everybody = new Vector<Character>();
+		//
 	}
 
 	public DrawingCanvas getCanvas() {
@@ -34,11 +36,28 @@ public class World implements Runnable {
 		// TODO manage character movement
 	//	overlaps(Drawable2DInterface playableCharacter)
 		while(true) {
+			
+			//tell everyone to move
+			for (int i = 0; i <everybody.size(); ++i){
+				everybody.get(i).takeAstep();
+			}
+			//pause before doing it again
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
 			for (Character c: everybody){
 				double dx = 0, dy = 0; 
 			}
 		}
 		
+	}
+	public void start(){
+		new Thread(this).start();
 	}
 }
 	

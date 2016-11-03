@@ -7,14 +7,14 @@ import objectdraw.*;
 
 public class PlayableCharacter extends Character implements Runnable{
 
-	private KeyboardManager keyboardManager;
+	protected KeyboardManager key;
 	private DrawingCanvas canvas;
 	
 	public int INCREMENT = 6;
 	
-	public PlayableCharacter(Image avatar, Location startingOrigin, World world, KeyboardManager keyboardManager) {
+	public PlayableCharacter(Image avatar, Location startingOrigin, World world, KeyboardManager key) {
 		super(avatar, startingOrigin, world);
-		
+		this.key = key;
 		
 		
 	}
@@ -35,29 +35,23 @@ public class PlayableCharacter extends Character implements Runnable{
 	public void run() {
 		// TODO Auto-generated method stub
 		
-	while (true) {
-		//
+	}
+	public void takeAstep() {
+		if(key.isPressed(KeyboardManager.UP)){
+			move(0, -stride);
+		}
+		if(key.isPressed(KeyboardManager.DOWN)){
+			move(0, stride);
+		}
+		if(key.isPressed(KeyboardManager.LEFT)){
+			move(-stride, 0);
+		}
+		if(key.isPressed(KeyboardManager.RIGHT)){
+			move(stride, 0);
+		}
 	
-		if (keyboardManager.isPressed(1) {
-			PlayableCharater.move(0, -INCREMENT);
-			//up
-		}
-		if (keyboardManager.isPressed(-1) {
-			PlayableCharater.move(0, INCREMENT);
-			//down
-		}
-		if (keyboardManager.isPressed(2) {
-			PlayableCharater.move(-INCREMENT, 0);\
-			//left
-		}
-		if (keyboardManager.isPressed(-2) {
-			PlayableCharater.move(INCREMENT, 0);
-			//right
-		}
-		
-		
 	}
-	}
+	
 }
 
 
