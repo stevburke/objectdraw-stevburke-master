@@ -9,8 +9,8 @@ public class Sample {
 		v.shuffle();
 		System.out.println(v);
 	//	InsertionSort(v);
-		//bubbleSort(v);
-		mergeSort(v);
+		bubbleSort(v);
+		//mergeSort(v);
 		System.out.println(v);
 	}
 	
